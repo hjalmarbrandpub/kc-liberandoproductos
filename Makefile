@@ -7,7 +7,7 @@ IMAGE_REGISTRY_DOCKERHUB 	?= hjalmarb
 IMAGE_REGISTRY_GHCR			?= ghcr.io
 IMAGE_REPO					= keepcodingpractise
 IMAGE_NAME					?= kc-9-liberando-productos-practica-final
-VERSION						?= develop
+VERSION						?= v1.2
 
 # Variables used to configure docker images registries to build and push
 IMAGE 				= $(IMAGE_REGISTRY_DOCKERHUB)/$(IMAGE_NAME):$(VERSION)
