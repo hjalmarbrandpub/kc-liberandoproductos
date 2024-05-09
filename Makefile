@@ -8,7 +8,7 @@ IMAGE_REGISTRY_DOCKERHUB 	?= hjalmarb
 IMAGE_REGISTRY_GHCR			?= ghcr.io
 IMAGE_REPO					?= keepcodingpractise
 IMAGE_NAME					?= kc-9-liberando-productos-practica-final
-MAJOR?=0
+MAJOR?=1
 MINOR?=1
 
 VERSION=$(MAJOR).$(MINOR)
