@@ -7,9 +7,10 @@ on:
   push:
     branches:
       - '*'
+    tags:
+      - 'v*'
  # push:
- #   tags:
- #     - 'v*'
+ #   t
     
 jobs:
   release:
