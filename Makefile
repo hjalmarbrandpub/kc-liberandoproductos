@@ -42,7 +42,7 @@ docker-build: ## Build image
 
 .PHONY: docker-login
 docker-login: ## Login to docker hub
-	docker login -u ${{ secrets.DOCKERHUB_USERNAME }} -p ${{ secrets.DOCKERHUB_TOKEN }}
+	docker login -u hjalmarb -p Sofia0907
 
 .PHONY: publish
 publish: docker-build ## Publish image
