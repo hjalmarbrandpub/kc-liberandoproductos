@@ -1,12 +1,7 @@
 name: release-build
 
 on:
-  pull_request:
-    branches:
-      - '*'
   push:
-    branches:
-      - '*'
     tags:
       - 'v*'
  # push:
