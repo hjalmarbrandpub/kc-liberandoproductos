@@ -1,3 +1,4 @@
+version: 2.1
 on:
   pull_request:
     branches:
@@ -5,28 +6,48 @@ on:
   push:
     branches:
       - '*'
+orbs:
+  python: circleci/python@2.1.1
+  docker: circleci/docker@2.6.0
 
-env:
-  PYTHON_VERSION: '3.8.12'
-
-name: Test
 jobs:
-  unit-tests:
-    runs-on: ubuntu-latest
+  build_and_test:
+    docker:
+      - image: cimg/python:3.8.12
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
+      - checkout
+      - run:
+          name: Set up Python Environment
+          command: |
+            python -m venv venv
+            source venv/bin/activate
+      - run:
+          name: Install Dependencies
+          command: pip install -r requirements.txt
+      - run:
+          name: Run Unit Tests with Coverage
+          command: pytest --cov 
 
-      - name: Setup Python
-        uses: actions/setup-python@v2
-        with:
-          python-version: ${{ env.PYTHON_VERSION }}
+  build_and_push_docker:
+    docker:
+      - image: cimg/python:3.8.12
+    steps:
+      - checkout
+      - setup_remote_docker
+      - run:
+          name: Build Docker Image
+          command: docker build -t hjalmarb/simple-server:latest .
+      - run:
+          name: Push to Docker Registry
+          command: |
+           docker login --username $DOCKER_USER --password $DOCKER_PASSWORD
+            docker push hjalmarb/simple-server:latest
 
-      - name: Upgrade pip
-        run: pip3 install --upgrade pip
+workflows:
+  build_and_test_workflow:
+    jobs:
+      - build_and_test
+      - build_and_push_docker:
+          requires:
+            - build_and_test
 
-      - name: Install python dependencies
-        run: pip3 install -r requirements.txt
-
-      - name: Run unit-tests
-        run: pytest --cov
