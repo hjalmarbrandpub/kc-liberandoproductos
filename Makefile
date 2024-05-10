@@ -7,9 +7,9 @@ PIP		= $(VENV)/bin/pip
 IMAGE_REGISTRY_DOCKERHUB 	?= hjalmarb
 IMAGE_REGISTRY_GHCR			?= ghcr.io
 IMAGE_REPO					?= kc-liberandoproductos
-IMAGE_NAME					?= kc-9-liberando-productos-practica-final
+IMAGE_NAME					?= simple-server
 MAJOR?=1
-MINOR?=1
+MINOR?=3
 
 VERSION=$(MAJOR).$(MINOR)
 
