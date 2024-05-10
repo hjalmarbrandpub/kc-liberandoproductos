@@ -6,7 +6,7 @@ PIP		= $(VENV)/bin/pip
 
 IMAGE_REGISTRY_DOCKERHUB 	?= hjalmarb
 IMAGE_REGISTRY_GHCR			?= ghcr.io
-IMAGE_REPO					?= keepcodingpractise
+IMAGE_REPO					?= kc-liberandoproductos
 IMAGE_NAME					?= kc-9-liberando-productos-practica-final
 MAJOR?=1
 MINOR?=1
